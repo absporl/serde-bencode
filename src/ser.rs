@@ -213,6 +213,10 @@ impl<'a> ser::Serializer for &'a mut Serializer {
     type SerializeStruct = SerializeMap<'a>;
     type SerializeStructVariant = SerializeMap<'a>;
 
+    fn is_human_readable(&self) -> bool {
+        false
+    }
+
     fn serialize_bool(self, value: bool) -> Result<()> {
         self.serialize_i64(i64::from(value))
     }
